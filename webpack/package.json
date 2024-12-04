@@ -1,0 +1,20 @@
+{
+  "name": "my-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/generator": "^7.26.3",
+    "@babel/parser": "^7.26.3",
+    "@babel/traverse": "^7.26.3",
+    "@babel/types": "^7.26.3",
+    "tapable": "^2.2.1",
+    "webpack": "^5.97.0"
+  }
+}
