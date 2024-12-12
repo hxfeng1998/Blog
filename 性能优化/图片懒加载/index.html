@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片懒加载</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        display: block;
+        margin: 6px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      const container = document.querySelector(".container");
+      for (let i = 0; i <= 24; i++) {
+        const img = document.createElement("img");
+        // 1.通过loading属性设置图片懒加载
+        // img.loading = "lazy";
+        // img.src = `./img/4${i.toString().padStart(2, "0")}.jpg`;
+
+        // 2.通过IntersectionObserver API 监听图片的可见性
+        img.setAttribute(
+          "data-src",
+          `./img/4${i.toString().padStart(2, "0")}.jpg`
+        );
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.intersectionRatio > 0) {
+                entry.target.src = entry.target.dataset.src;
+                entry.target.removeAttribute("data-src");
+                observer.disconnect();
+              }
+            });
+          },
+          {
+            rootMargin: "500px 0px 500px 0px",
+            root: null
+          }
+        );
+        observer.observe(img);
+
+        img.width = 400;
+        img.height = 400;
+        container.appendChild(img);
+      }
+    </script>
+  </body>
+</html>
