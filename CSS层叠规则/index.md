@@ -60,9 +60,9 @@
 
 ## 记录两个有意思的问题，案例在index.html
 
-- 为什么inline-block的文字会被inline的背景覆盖？
+- 为什么inline-child的文字会被inline的背景覆盖？
 
-  -  最开始我一直认为inline-block在inline的层叠上下文环境中，所以就算z-index设置为负值，也会显示在inline的背景之上
-  -  后来发现z-index的默认值是auto，position为absolute并不会创建层叠上下文，所以inline-block和inline的层叠上下文其实都是根元素，而inline的z-index为auto比0大，所以inline的背景会覆盖inline-block的文字。
+  -  最开始我一直认为inline-child在inline的层叠上下文环境中，所以就算z-index设置为负值，也会显示在inline的背景之上
+  -  后来发现z-index的默认值是auto，position为absolute并不会创建层叠上下文，所以inline-child和inline的层叠上下文其实都是根元素，而inline的z-index为auto比inline-child的-1大，所以inline的背景会覆盖inline-child的文字。
 
 - 对于绝对定位的元素，盒子的display会被设置为block。可以在控制台通过getComputedStyle($0).display查看。还有一些条件，比如浮动元素、flex/grid的直接子元素，它们的display也会被设置为block。
